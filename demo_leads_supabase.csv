@@ -1,0 +1,4 @@
+id,created_at,nome,email,empresa,setor,tipo_veiculo,quantidade_veiculos,km_por_mes,turnos,usa_telemetria,acidentes_6meses,desafio_principal,regiao,frota_propria,tem_meta_acidentes,score_risco,score_eficiencia,score_compliance,score_produtividade,economia_estimada_mes,reducao_acidentes_estimada_pct,fonte
+1,2026-03-12T10:00:00Z,João Silva,joao@mineradora.com.br,Mineradora Alpha,mineracao,maquinario_pesado,120,15000,3,nao,mais_de_15,acidentes,Centro-Oeste,propria,sim,82,45,38,60,487200,48,demo-creativ-ia
+2,2026-03-12T11:30:00Z,Carla Mendes,carla@transportes.com.br,Transportes Beta,logistica,caminhao_pesado,85,9500,2,basico,6_a_15,combustivel,Sudeste,propria_e_terceirizada,nao,65,58,52,72,198400,41,demo-creativ-ia
+3,2026-03-12T14:00:00Z,Roberto Alves,roberto@copel.com.br,Copel Distribuição,utilities,frota_leve,200,6000,2,avancado,1_a_5,compliance,Sul,propria,sim,38,74,81,78,312000,35,demo-creativ-ia

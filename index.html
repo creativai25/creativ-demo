@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Creativ AI — Diagnóstico Inteligente de Frota</title>
+  <meta name="description" content="Descubra em 3 minutos como a Inteligência Artificial pode transformar a segurança e eficiência da sua frota. Diagnóstico gratuito pela Creativ AI Soluções." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Background animado -->
+  <div class="bg-grid"></div>
+  <div class="bg-glow glow-1"></div>
+  <div class="bg-glow glow-2"></div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">
+      <div class="logo-icon">⚡</div>
+      <span class="logo-text">Creativ <span class="logo-accent">AI</span></span>
+    </div>
+    <div class="header-badge">Demo Exclusiva</div>
+  </header>
+
+  <!-- Container Principal -->
+  <main class="main">
+
+    <!-- Progress Bar -->
+    <div class="progress-wrapper" id="progressWrapper">
+      <div class="progress-steps">
+        <div class="step-dot active" id="dot1">
+          <span class="dot-num">1</span>
+          <span class="dot-label">Seu setor</span>
+        </div>
+        <div class="step-line" id="line1"></div>
+        <div class="step-dot" id="dot2">
+          <span class="dot-num">2</span>
+          <span class="dot-label">Sua operação</span>
+        </div>
+        <div class="step-line" id="line2"></div>
+        <div class="step-dot" id="dot3">
+          <span class="dot-num">3</span>
+          <span class="dot-label">Diagnóstico IA</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PASSO 1: Setor -->
+    <section class="card" id="step1">
+      <div class="card-header">
+        <div class="step-badge">Passo 1 de 3</div>
+        <h1 class="card-title">Qual é o <span class="highlight">setor</span> da sua operação?</h1>
+        <p class="card-subtitle">Personalizamos o diagnóstico de IA para o contexto específico do seu negócio</p>
+      </div>
+
+      <div class="sector-grid" id="sectorGrid">
+        <button class="sector-btn" data-sector="logistica" id="sec-logistica">
+          <span class="sector-icon">🚛</span>
+          <span class="sector-name">Transporte e Logística</span>
+          <span class="sector-desc">Frotas de carga, distribuição, last mile</span>
+        </button>
+        <button class="sector-btn" data-sector="mineracao" id="sec-mineracao">
+          <span class="sector-icon">⛏️</span>
+          <span class="sector-name">Mineração</span>
+          <span class="sector-desc">Caminhões fora-de-estrada, operações em mina</span>
+        </button>
+        <button class="sector-btn" data-sector="utilities" id="sec-utilities">
+          <span class="sector-icon">⚡</span>
+          <span class="sector-name">Utilities</span>
+          <span class="sector-desc">Energia elétrica, saneamento, telecomunicações</span>
+        </button>
+        <button class="sector-btn" data-sector="sucroenergetico" id="sec-sucro">
+          <span class="sector-icon">🌾</span>
+          <span class="sector-name">Sucroenergético</span>
+          <span class="sector-desc">Safra, colheita, colhedoras e transporte de cana</span>
+        </button>
+        <button class="sector-btn" data-sector="florestal" id="sec-florestal">
+          <span class="sector-icon">🌲</span>
+          <span class="sector-name">Florestal</span>
+          <span class="sector-desc">Colheita de madeira, transporte florestal</span>
+        </button>
+        <button class="sector-btn" data-sector="construcao" id="sec-construcao">
+          <span class="sector-icon">🏗️</span>
+          <span class="sector-name">Construção</span>
+          <span class="sector-desc">Obras, canteiros, máquinas pesadas</span>
+        </button>
+      </div>
+
+      <button class="btn-primary" id="btnStep1" disabled>
+        Próximo — Sua operação
+        <span class="btn-arrow">→</span>
+      </button>
+    </section>
+
+    <!-- PASSO 2: Dados da Operação -->
+    <section class="card hidden" id="step2">
+      <div class="card-header">
+        <div class="step-badge">Passo 2 de 3</div>
+        <h2 class="card-title">Como é a <span class="highlight">sua operação</span>?</h2>
+        <p class="card-subtitle">Quanto mais detalhado, mais preciso o diagnóstico da IA</p>
+      </div>
+
+      <div class="form-grid">
+
+        <!-- Bloco 1: Sua Frota -->
+        <div class="form-block-title">🚚 Composição da Frota</div>
+
+        <div class="form-group">
+          <label class="form-label">Quantidade de veículos na frota</label>
+          <div class="range-wrapper">
+            <input type="range" id="vehicleCount" min="1" max="2000" value="100" step="1" class="range-input" />
+            <div class="range-value"><span id="vehicleCountVal">100</span> veículos</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Km médio rodado por veículo / mês</label>
+          <div class="range-wrapper">
+            <input type="range" id="kmPerMonth" min="1000" max="50000" value="8000" step="500" class="range-input" />
+            <div class="range-value"><span id="kmPerMonthVal">8.000</span> km/mês</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Tipo de veículo predominante</label>
+          <div class="toggle-group" id="tipoVeiculoGroup">
+            <button class="toggle-btn active" data-value="caminhao_pesado" id="tv1">🚛 Caminhão pesado</button>
+            <button class="toggle-btn" data-value="maquinario_pesado" id="tv2">⛏️ Maquinário pesado</button>
+            <button class="toggle-btn" data-value="frota_leve" id="tv3">🚗 Frota leve</button>
+            <button class="toggle-btn" data-value="vuc" id="tv4">📦 VUC / Leve urbano</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Turnos de operação</label>
+          <div class="toggle-group" id="turnosGroup">
+            <button class="toggle-btn active" data-value="1" id="turno1">1 turno</button>
+            <button class="toggle-btn" data-value="2" id="turno2">2 turnos</button>
+            <button class="toggle-btn" data-value="3" id="turno3">3 turnos (24h)</button>
+          </div>
+        </div>
+
+        <!-- Bloco 2: Segurança e Maturidade -->
+        <div class="form-block-title">🛡️ Segurança &amp; Tecnologia Atual</div>
+
+        <div class="form-group">
+          <label class="form-label">Você já usa algum sistema de telemetria ou câmeras hoje?</label>
+          <div class="toggle-group" id="telemetriaGroup">
+            <button class="toggle-btn active" data-value="nao" id="tel1">❌ Não utilizo</button>
+            <button class="toggle-btn" data-value="basico" id="tel2">📡 Sim, básico</button>
+            <button class="toggle-btn" data-value="avancado" id="tel3">🎯 Sim, avançado</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Acidentes / incidentes nos últimos 6 meses</label>
+          <div class="toggle-group" id="acidentesGroup">
+            <button class="toggle-btn active" data-value="nenhum" id="ac1">✅ Nenhum</button>
+            <button class="toggle-btn" data-value="1_a_5" id="ac2">⚠️ 1 a 5</button>
+            <button class="toggle-btn" data-value="6_a_15" id="ac3">🔶 6 a 15</button>
+            <button class="toggle-btn" data-value="mais_de_15" id="ac4">🔴 +15</button>
+          </div>
+        </div>
+
+        <!-- Bloco 3: Contexto Comercial -->
+        <div class="form-block-title">📋 Contexto Operacional</div>
+
+        <div class="form-group">
+          <label class="form-label">Maior desafio operacional hoje</label>
+          <div class="toggle-group column" id="desafioGroup">
+            <button class="toggle-btn active" data-value="acidentes" id="desafio1">🚨 Acidentes e segurança</button>
+            <button class="toggle-btn" data-value="combustivel" id="desafio2">⛽ Consumo de combustível</button>
+            <button class="toggle-btn" data-value="produtividade" id="desafio3">📈 Produtividade e rotas</button>
+            <button class="toggle-btn" data-value="compliance" id="desafio4">📋 Compliance e relatórios</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Região principal de operação</label>
+          <div class="toggle-group" id="regiaoGroup">
+            <button class="toggle-btn active" data-value="Sudeste" id="reg1">Sudeste</button>
+            <button class="toggle-btn" data-value="Sul" id="reg2">Sul</button>
+            <button class="toggle-btn" data-value="Centro-Oeste" id="reg3">Centro-Oeste</button>
+            <button class="toggle-btn" data-value="Norte" id="reg4">Norte</button>
+            <button class="toggle-btn" data-value="Nordeste" id="reg5">Nordeste</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Sua frota é</label>
+          <div class="toggle-group" id="frotaGroup">
+            <button class="toggle-btn active" data-value="propria" id="fr1">🏢 Própria</button>
+            <button class="toggle-btn" data-value="terceirizada" id="fr2">🤝 Terceirizada</button>
+            <button class="toggle-btn" data-value="propria_e_terceirizada" id="fr3">⚡ Mista</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Tem meta de redução de acidentes estabelecida?</label>
+          <div class="toggle-group" id="metaGroup">
+            <button class="toggle-btn active" data-value="nao" id="meta1">Não</button>
+            <button class="toggle-btn" data-value="sim" id="meta2">Sim, temos meta</button>
+          </div>
+        </div>
+
+      </div><!-- /form-grid -->
+
+      <div class="btn-row">
+        <button class="btn-secondary" id="btnBack2">← Voltar</button>
+        <button class="btn-primary" id="btnStep2">
+          Gerar Diagnóstico com IA
+          <span class="btn-arrow">✨</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- PASSO 3: Resultado IA -->
+    <section class="card hidden" id="step3">
+
+      <!-- Loading State -->
+      <div id="loadingState" class="loading-state">
+        <div class="ai-loader">
+          <div class="loader-ring"></div>
+          <div class="loader-ring ring2"></div>
+          <div class="loader-icon">🧠</div>
+        </div>
+        <h3 class="loading-title">IA Analisando sua operação...</h3>
+        <div class="loading-steps">
+          <div class="loading-step" id="ls1">✓ Processando dados de telemetria</div>
+          <div class="loading-step" id="ls2">✓ Calculando Score de Risco</div>
+          <div class="loading-step" id="ls3">✓ Gerando recomendações estratégicas</div>
+        </div>
+      </div>
+
+      <!-- Result State -->
+      <div id="resultState" class="hidden">
+        <div class="card-header">
+          <div class="step-badge success">✓ Diagnóstico Concluído</div>
+          <h2 class="card-title">Diagnóstico <span class="highlight" id="resultSector">da sua frota</span></h2>
+        </div>
+
+        <!-- Score de Risco -->
+        <div class="score-section">
+          <div class="score-card" id="scoreCard">
+            <div class="score-label">Score de Risco da Frota</div>
+            <div class="score-ring">
+              <svg class="score-svg" viewBox="0 0 120 120">
+                <circle class="score-track" cx="60" cy="60" r="50" />
+                <circle class="score-fill" id="scoreFill" cx="60" cy="60" r="50"
+                  stroke-dasharray="314" stroke-dashoffset="314" />
+              </svg>
+              <div class="score-value" id="scoreValue">--</div>
+            </div>
+            <div class="score-status" id="scoreStatus">Calculando...</div>
+          </div>
+
+          <div class="score-details">
+            <div class="kpi-card" id="kpi1">
+              <div class="kpi-icon">⚠️</div>
+              <div class="kpi-info">
+                <div class="kpi-value" id="kpiAccidents">--</div>
+                <div class="kpi-label">Incidentes estimados/mês</div>
+              </div>
+            </div>
+            <div class="kpi-card" id="kpi2">
+              <div class="kpi-icon">💰</div>
+              <div class="kpi-info">
+                <div class="kpi-value" id="kpiSavings">--</div>
+                <div class="kpi-label">Economia potencial/mês</div>
+              </div>
+            </div>
+            <div class="kpi-card" id="kpi3">
+              <div class="kpi-icon">📉</div>
+              <div class="kpi-info">
+                <div class="kpi-value" id="kpiReduction">--</div>
+                <div class="kpi-label">Redução de acidentes com IA</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Radar Chart -->
+        <div class="radar-section">
+          <h3 class="section-title">📊 Mapa de Maturidade Operacional</h3>
+          <div class="radar-wrapper">
+            <canvas id="radarChart" width="320" height="320"></canvas>
+            <div class="radar-legend">
+              <div class="legend-item"><span class="legend-dot current"></span>Situação atual</div>
+              <div class="legend-item"><span class="legend-dot target"></span>Com Creativ AI</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Insights da IA -->
+        <div class="insights-section">
+          <h3 class="section-title">🧠 Insights da Inteligência Artificial</h3>
+          <div class="insights-content" id="insightsContent"></div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-section">
+          <div class="cta-card">
+            <div class="cta-icon">🚀</div>
+            <h3 class="cta-title">Quer ver isso com os dados reais da sua frota?</h3>
+            <p class="cta-desc">Nossos especialistas apresentam uma demonstração ao vivo com os dados da sua operação. Sem compromisso.</p>
+            <div class="cta-form">
+              <input type="text" id="leadName" placeholder="Seu nome" class="cta-input" />
+              <input type="email" id="leadEmail" placeholder="Seu e-mail profissional" class="cta-input" />
+              <input type="text" id="leadCompany" placeholder="Nome da empresa" class="cta-input" />
+              <button class="btn-cta" id="btnSubmitLead">
+                Quero a demonstração real →
+              </button>
+            </div>
+            <p class="cta-fine">Seus dados são protegidos pela LGPD. Não enviamos spam.</p>
+          </div>
+        </div>
+
+        <button class="btn-ghost" id="btnRestart">↩ Refazer diagnóstico com outros dados</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>Esta é uma <strong>simulação demonstrativa</strong> baseada em médias do setor. Os valores reais são calculados com os dados telimétricos da sua frota.</p>
+    <p class="footer-brand">Powered by <strong>Creativ AI Soluções</strong></p>
+  </footer>
+
+  <!-- Toast de sucesso -->
+  <div class="toast" id="toast">
+    <span class="toast-icon">✅</span>
+    <span id="toastMsg">Mensagem enviada!</span>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
